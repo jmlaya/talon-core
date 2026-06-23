@@ -46,7 +46,7 @@ export type GeneralAppOptions = {
     database: string;
     schema?: string;
     port: number;
-    ssl?: boolean | { rejectUnauthorized: boolean };
+    ssl?: boolean;
     pool?: {
       max?: number;
       maxLifetime?: number;

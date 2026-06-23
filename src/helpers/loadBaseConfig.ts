@@ -35,7 +35,8 @@ export async function loadBaseConfig() {
 
   if (await Bun.file(path).exists()) {
     try {
-      config = interpolateEnvValues(JSON.parse(await Bun.file(path).text())) as GeneralAppOptions;
+      const fileContent = interpolateEnvValues(await Bun.file(path).text()) as string;
+      config = JSON.parse(fileContent) as GeneralAppOptions;
     } catch (error) {
       log.ERROR('Error loading talon.json:', error);
       process.exit(1);
